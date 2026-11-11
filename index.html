@@ -2,27 +2,101 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#111827">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f172a">
 <title>Ali Saleh | NFC Card</title>
 <style>
-*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(145deg,#0f172a,#1e293b);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#f8fafc}
-.card{width:min(100%,390px);padding:30px 22px;border:1px solid #334155;border-radius:28px;background:rgba(15,23,42,.92);box-shadow:0 24px 70px #0008}
-.avatar{width:72px;height:72px;margin:0 auto 16px;border-radius:22px;display:grid;place-items:center;background:linear-gradient(135deg,#38bdf8,#6366f1);font-size:30px;font-weight:800}
-h1{text-align:center;margin:0;font-size:27px;letter-spacing:.2px}.sub{text-align:center;color:#94a3b8;margin:7px 0 26px}
-.actions{display:grid;gap:12px}.action{display:flex;align-items:center;gap:14px;padding:16px;border:1px solid #334155;border-radius:17px;background:#1e293b;color:#f8fafc;text-decoration:none;transition:.15s}.action:active{transform:scale(.98)}.ico{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:#0f172a;font-size:21px}.label{font-weight:700}.hint{display:block;color:#94a3b8;font-size:12px;margin-top:3px}.arrow{margin-left:auto;color:#94a3b8;font-size:20px}.foot{text-align:center;color:#64748b;font-size:11px;margin:22px 0 0}
+  :root{
+    --bg1:#0b1220; --bg2:#1e293b;
+    --card:rgba(17,24,39,.72); --border:rgba(148,163,184,.18);
+    --text:#f8fafc; --muted:#94a3b8; --faint:#64748b;
+    --row:rgba(30,41,59,.65); --row-brd:rgba(148,163,184,.14);
+    --a1:#38bdf8; --a2:#6366f1;
+    --call:#22c55e; --search:#f59e0b; --pay:#a855f7;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;min-height:100svh;display:grid;place-items:center;
+    padding:max(24px,env(safe-area-inset-top)) 20px max(24px,env(safe-area-inset-bottom));
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(1100px 520px at 50% -10%,rgba(56,189,248,.18),transparent 60%),
+      radial-gradient(900px 500px at 50% 120%,rgba(99,102,241,.20),transparent 60%),
+      linear-gradient(160deg,var(--bg1),var(--bg2));
+  }
+  .card{
+    width:min(100%,400px);padding:30px 22px 24px;position:relative;
+    border:1px solid var(--border);border-radius:28px;
+    background:var(--card);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    box-shadow:0 30px 80px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.05);
+  }
+  .avatar{
+    width:84px;height:84px;margin:0 auto 16px;border-radius:24px;
+    display:grid;place-items:center;font-size:32px;font-weight:800;letter-spacing:.5px;
+    background:linear-gradient(135deg,var(--a1),var(--a2));
+    box-shadow:0 12px 30px rgba(56,189,248,.35),inset 0 1px 0 rgba(255,255,255,.25);
+  }
+  h1{text-align:center;margin:0;font-size:26px;font-weight:800;letter-spacing:.2px}
+  .role{text-align:center;color:var(--a1);font-weight:600;font-size:13px;margin:6px 0 2px;letter-spacing:.3px}
+  .sub{text-align:center;color:var(--muted);font-size:13px;margin:2px 0 24px}
+  .actions{display:grid;gap:12px}
+  .action{
+    display:flex;align-items:center;gap:14px;padding:15px 16px;
+    border:1px solid var(--row-brd);border-radius:18px;background:var(--row);
+    color:var(--text);text-decoration:none;
+    transition:transform .12s ease,border-color .15s ease,background .15s ease;
+  }
+  @media(hover:hover){.action:hover{background:rgba(51,65,85,.7);border-color:rgba(148,163,184,.3);transform:translateY(-1px)}}
+  .action:active{transform:scale(.985)}
+  .action:focus-visible{outline:2px solid var(--a1);outline-offset:2px}
+  .ico{width:44px;height:44px;flex:0 0 44px;display:grid;place-items:center;border-radius:14px;background:rgba(15,23,42,.9)}
+  .ico svg{width:21px;height:21px}
+  .call .ico{color:var(--call)}.search .ico{color:var(--search)}.pay .ico{color:var(--pay)}
+  .txt{display:flex;flex-direction:column;min-width:0}
+  .label{font-weight:700;font-size:15px}
+  .hint{color:var(--muted);font-size:12px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .arrow{margin-left:auto;color:var(--faint);font-size:22px;line-height:1}
+  .foot{text-align:center;color:var(--faint);font-size:11px;margin:22px 0 0}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 <main class="card">
   <div class="avatar">AS</div>
   <h1>Ali Saleh</h1>
+  <p class="role">DevOps Engineer</p>
   <p class="sub">Choose an action</p>
+
   <nav class="actions">
-    <a class="action" href="tel:01550112955"><span class="ico">☎</span><span><span class="label">Call me</span><span class="hint">01550112955</span></span><span class="arrow">›</span></a>
-    <a class="action" href="https://www.google.com/search?q=ali+saleh+devops+engineer" target="_blank" rel="noopener"><span class="ico">⌕</span><span><span class="label">Google search</span><span class="hint">Ali Saleh · DevOps Engineer</span></span><span class="arrow">›</span></a>
-    <a class="action" href="https://ipn.eg/S/alisalehdevops/instapay/8OGXNK" target="_blank" rel="noopener"><span class="ico">↗</span><span><span class="label">InstaPay</span><span class="hint">Open InstaPay profile</span></span><span class="arrow">›</span></a>
+    <a class="action call" href="tel:+201550112955">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+      </span>
+      <span class="txt"><span class="label">Call me</span><span class="hint">0155 011 2955</span></span>
+      <span class="arrow" aria-hidden="true">›</span>
+    </a>
+
+    <a class="action search" href="https://www.google.com/search?q=ali+saleh+devops+engineer" target="_blank" rel="noopener">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </span>
+      <span class="txt"><span class="label">Google search</span><span class="hint">Ali Saleh · DevOps Engineer</span></span>
+      <span class="arrow" aria-hidden="true">›</span>
+    </a>
+
+    <!-- InstaPay: NO target=_blank so the universal link hands off to the app -->
+    <a class="action pay" href="https://ipn.eg/S/alisalehdevops/instapay/8OGXNK" rel="noopener">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><path d="M16 15h2"/></svg>
+      </span>
+      <span class="txt"><span class="label">InstaPay</span><span class="hint">Send me a payment</span></span>
+      <span class="arrow" aria-hidden="true">›</span>
+    </a>
   </nav>
+
   <p class="foot">Tap any option to continue</p>
 </main>
 </body>
