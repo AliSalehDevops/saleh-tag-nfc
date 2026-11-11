@@ -12,7 +12,7 @@
     --text:#f8fafc; --muted:#94a3b8; --faint:#64748b;
     --row:rgba(30,41,59,.65); --row-brd:rgba(148,163,184,.14);
     --a1:#38bdf8; --a2:#6366f1;
-    --call:#22c55e; --search:#f59e0b; --pay:#a855f7;
+    --call:#22c55e; --search:#f59e0b; --pay:#a855f7; --insta:#ec4899;
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
@@ -54,7 +54,7 @@
   .action:focus-visible{outline:2px solid var(--a1);outline-offset:2px}
   .ico{width:44px;height:44px;flex:0 0 44px;display:grid;place-items:center;border-radius:14px;background:rgba(15,23,42,.9)}
   .ico svg{width:21px;height:21px}
-  .call .ico{color:var(--call)}.search .ico{color:var(--search)}.pay .ico{color:var(--pay)}
+  .call .ico{color:var(--call)}.search .ico{color:var(--search)}.pay .ico{color:var(--pay)}.insta .ico{color:var(--insta)}
   .txt{display:flex;flex-direction:column;min-width:0}
   .label{font-weight:700;font-size:15px}
   .hint{color:var(--muted);font-size:12px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -93,6 +93,13 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><path d="M16 15h2"/></svg>
       </span>
       <span class="txt"><span class="label">InstaPay</span><span class="hint">Send me a payment</span></span>
+      <span class="arrow" aria-hidden="true">›</span>
+    </a>
+    <a class="action insta" href="https://www.instagram.com/velinachocolates/" target="_blank" rel="noopener">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"/></svg>
+      </span>
+      <span class="txt"><span class="label">Velina Chocolates</span><span class="hint">@velinachocolates on Instagram</span></span>
       <span class="arrow" aria-hidden="true">›</span>
     </a>
   </nav>
